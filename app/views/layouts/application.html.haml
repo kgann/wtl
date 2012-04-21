@@ -3,8 +3,32 @@
 %html
   %head
     %title Walk The Line
-    -stylesheet_link_tag    "application", :media => "all"
-    -javascript_include_tag "application"
-    -csrf_meta_tags
+    =stylesheet_link_tag    "application", :media => "all"
+    =javascript_include_tag "application"
+    =csrf_meta_tags
+    =favicon_link_tag
   %body
-    =yield
+    #wrapper
+      #header
+        %h1
+          =link_to image_tag( 'walk-the-line.png'), root_path
+        #photo_loop_click
+        #artist_photo
+          / <img src="<?php echo PHOTO_LOOP_DIR.$artist_pic['filename']?>" title="<?php echo $artist_pic['title'] ?>"/>
+        #photo_loop
+      #left_col
+        #menu
+          #main
+        #contact
+        #social
+      #content
+        #right_col
+          =yield
+      #footer_wrapper
+        #footer
+          %p
+            %span.left
+              ="&#169;#{Time.now.year} Walk The Line Tattoo Co.".html_safe
+            %span.right OutlandishLabs.com
+          #floral_bottom
+    

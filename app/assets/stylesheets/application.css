@@ -11,3 +11,555 @@
  *= require_self
  *= require_tree .
 */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Walk The Line Tattoo */
+
+/**********
+  Body
+**********/
+body{
+  background:transparent url('/assets/wtl-bg-1.jpg') repeat fixed left top;
+  font-family:'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  text-align:center;
+  height:100%;
+  line-height:100%;
+}
+
+/**********
+  Wrapper
+**********/
+#wrapper{
+  width:1030px;
+  margin:0 auto;
+  text-align:left;
+  position:relative;
+}
+/**********
+  Header
+**********/
+#header{
+  position:relative;
+  z-index:100;
+  float:left;
+  width:1030px;
+  height:390px;
+  background:transparent url('/assets/wtl-header.png') no-repeat left top;
+}
+
+#header h1{
+  position:relative;
+  padding:55px 0 0 65px;
+  float:left;
+}
+
+/*************
+  Photo Loop
+**************/
+#photo_loop, #artist_photo{
+  position:relative;
+  z-index:50;
+  width:310px;
+  height:240px;
+  margin:-340px 60px 0 0;
+  float:right;
+  overflow:hidden;
+  display:inline;
+}
+#photo_loop_click{ /* used to allow interaction with slideshow images*/
+  position:relative;
+  float:right;
+  margin:50px 62px 0 0;
+  display:inline;
+  width:307px;
+  height:235px;
+  z-index:1000; /* keep it in the front */
+  cursor:pointer;
+}
+#photo_loop img{
+  border-right:2px solid #CDBE93 ;
+}
+
+/**********
+  Content
+**********/
+#content{
+  position:relative;
+  z-index:1;
+  width:915px;
+  min-height:650px;
+  margin:-80px 0 0 60px;
+  padding:44px 0 30px 0;
+  float:left;
+  background:transparent url('/assets/wtl-content-bg.jpg') repeat-y left top;
+  border:1px solid #000000;
+  display:inline;
+  font-weight:bold;
+}
+
+/**********
+  Left Col
+**********/
+#left_col{
+  float:left;
+  display:inline;
+  position:absolute;
+  left:61px;
+  top:352px;
+  margin:0 0 0 -9px;
+  padding:0;
+  width:213px;
+  z-index:999;
+  text-shadow: 1px 1px 1px rgba(190,190,190,0.6);
+}
+
+/**********
+  Contact
+**********/
+#left_col #contact{
+  padding:0 0 0 28px;
+  float:left;
+}
+#left_col #contact p{
+  font-weight:bold;
+  padding-bottom:10px; 
+  float:left;
+  width:100%;
+}
+
+/**********
+  Social
+**********/
+#left_col  #social{
+  width:100%;
+  height:57px;
+  padding:5px 0 0 28px;
+  float:left;
+}
+#left_col  #social iframe{ /*Facebook Like*/
+  margin:-29px 0 0 58px;
+  display:block;
+}
+
+/**********
+  Menu
+**********/
+#menu{
+  margin:0 0 16px 0;
+  float:left;
+}
+
+#menu ul{
+  float:left;
+}
+#menu ul li{
+  width:210px;
+  float:left;
+}
+#menu ul li a.header{
+  width:202px;
+  height:35px;
+  padding: 16px 0 0 0;
+  color:#D1C8A1;
+  font-weight:bold;
+  font-size:22px;
+  float:left;
+  background:transparent url('/assets/wtl-menu-bg.png') no-repeat left top;
+  text-decoration:none;
+  line-height:normal;
+  cursor:pointer;
+  text-align:center;
+}
+#menu ul li a.header:hover,
+#menu ul li a.header.active{
+  padding: 16px 6px 0 2px;
+  margin:2px 0 -2px 0;
+  text-decoration:none;
+  background:transparent url('/assets/wtl-menu-bg-hover.png') no-repeat left top;
+}
+
+/* Sub Menu */
+#menu ul.sub_menu{
+  float:left;
+  margin:0;
+  padding:15px 0 2px 8px;
+  width:190px;
+  display:none;
+}
+#menu ul.sub_menu.active{
+  display:list-item;
+}
+#menu ul.sub_menu li{
+  width:183px;
+  padding:0;
+  margin:0;
+  height:32px;
+  border-bottom:3px double #000000;
+}
+#menu ul.sub_menu li.first{
+  border-top:3px double #000000;
+}
+#menu ul.sub_menu li a.sub_link{
+  width:151px;
+  height:21px;
+  padding:4px 10px 7px 22px;
+  color:#551717;
+  font-weight:bold;
+  font-size:16px;
+  display:block;
+  background:none;
+  text-decoration:none;
+  line-height:normal;
+}
+#menu ul.sub_menu li a.sub_link:hover{
+  text-decoration:none;
+  background:transparent url('/assets/wtl-submenu-bg-hover.png') no-repeat top left;
+}
+
+/**********
+  Right Col
+**********/
+#right_col{
+  float:right;
+  width:638px;
+  min-height:700px;
+  padding:19px 43px 0 0;
+  text-shadow: 1px 1px 1px rgba(222,222,222,0.6);
+}
+*html #right_col{
+  height:700px; /*IE 6 fix*/
+}
+#right_col h2{
+  font-weight:bold;
+  font-size:22px;
+  padding:0 0 10px 0;
+  margin:0 0 8px 0;
+  border-bottom:3px double #000000;
+  color:#551717;
+}
+#right_col h3{
+  font-weight:bold;
+  font-size:18px;
+  padding:0 0 10px 0;
+  margin:18px 0 8px 0;
+  border-bottom:3px double #000000;
+  color:#551717;
+}
+#right_col h4{
+  font-weight:bold;
+  font-size:16px;
+  padding:0 0 10px 0;
+  margin:18px 0 8px 0;
+  border-bottom:3px double #000000;
+  color:#551717;
+}
+#right_col p{
+  line-height:20px;
+  padding-bottom:10px;
+}
+#right_col p a, #right_col a{
+  text-decoration:none;
+  font-style:italic;
+  color:#551717;
+  font-weight:bold;
+}
+#right_col p a:hover, #right_col a:hover{
+  text-decoration:underline;
+  color:#551717;
+}
+#right_col p a:visited, #right_col a:visited{
+  text-decoration:none;
+  color:#551717
+}
+
+/**********
+  Post
+**********/
+#right_col div.post h3{
+  margin:15px 0 0 0;
+  padding:0 0 5px 0;
+}
+
+#right_col div.post h4.info{
+  border:none;
+  margin:0 0 10px 0;
+  padding:5px 0 0 0;
+  text-align:right;
+  font-size:13px;
+}
+
+#right_col div.post h4.info .name{
+
+}
+
+#right_col div.post h4.info .date{
+  color:#000;
+  padding-left:10px;
+  font-style:italic;
+}
+
+#right_col div.post a{
+  display:inline-block;
+  width:75px;
+  height:75px;
+  border:2px solid #000;
+}
+
+/************
+  Store Item
+************/
+#right_col div.item{
+  margin:0 0 25px 0;
+}
+#right_col div.item h3{
+    border-bottom:3px double #000000;
+  margin:15px 0 0 0;
+  padding:0 0 5px 0;
+}
+#right_col div.item h3 .artist_name{
+  float:right;
+}
+#right_col div.item h4.info{
+  border:none;
+  margin:0 0 0 0;
+  padding:5px 0 0 0;
+  text-align:right;
+  font-size:13px;
+    float:right;
+}
+
+#right_col div.item h4.info .price{
+  float:right;
+  font-size:20px;
+  margin-top:3px;
+  padding-right:5px;
+}
+
+#right_col div.item h4.info .buy_now{
+  float:right
+}
+
+#right_col div.item a,
+#right_col div.post a{
+  display:inline-block;
+  width:75px;
+  height:75px;
+  border:2px solid #000;
+  margin:0 0 5px 0;
+  -moz-box-shadow: 2px 2px 1px #888;
+  -webkit-box-shadow: 2px 2px 1px #888;
+  box-shadow: 2px 2px 1px #888;
+}
+
+/**********
+  Footer
+**********/
+#footer_wrapper{
+  width:100%;
+  position:relative;
+}
+#footer{
+  float:left;
+  display:inline;
+  padding:0;
+  margin:0 0 0 60px;
+  width:915px;
+  height:100px;
+  background-color:#4B1414;
+  border:1px solid #000000;
+  border-top:none;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
+}
+
+#footer p{
+  color:#D1C8A1;
+  font-size:13px;
+  font-weight:bold;
+  padding:10px;
+}
+#footer p .left{
+  float:left;
+}
+#footer p .right{
+  float:right;
+}
+
+/***************
+  Floral Bottom
+****************/
+#floral_bottom{
+  width:1042px;
+  height:93px;
+  margin:-12px 0 0 -68px;
+  position:relative;
+  background:transparent url('/assets/wtl-floral-bottom.png') no-repeat top left;
+}
+
+/********************
+  Galleriffic Styles
+*********************/
+#right_col #gallery_wrapper{
+  display:none;
+}
+#right_col #gallery .slideshow-container{
+  float:left;
+  width:623px;
+  height:500px;
+  position: relative;
+}
+#right_col div.slideshow span.image-wrapper {
+  display:block;
+  position:absolute;
+  top: 0;
+  left: 0;
+}
+#right_col div.slideshow a.advance-link {
+  display: block;
+  width: 635px;
+  height: 500px;
+  line-height: 500px;
+  text-align: center;
+  text-decoration:none;
+}
+#right_col div.slideshow a.advance-link:hover, 
+#right_col div.slideshow a.advance-link:active, 
+#right_col div.slideshow a.advance-link:visited {
+  text-decoration: none;
+}
+#right_col div.slideshow img {
+  vertical-align:middle;
+  border:2px solid #000000;
+  width:auto;
+  height:auto;
+  -moz-box-shadow: 5px 5px 3px #333;
+  -webkit-box-shadow: 5px 5px 3px #333;
+  box-shadow: 5px 5px 3px #333;
+}
+
+#right_col span.image-caption {
+  float:left;
+  width:635px;
+}
+
+#right_col #gallery_buttons{
+  position:relative;
+  float:left;
+  width:100%;
+}
+
+#right_col div.controls a {
+  padding: 5px;
+}
+#right_col div.ss-controls {
+  float: left;
+}
+#right_col div.nav-controls {
+  float: right;
+}
+#right_col #caption {
+  display: block;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+}
+
+#right_col #thumbs{
+  width:600px;
+  height:103px;
+  padding:18px 0 0 35px;
+  position:relative;
+  background:transparent url('/assets/wtl-thumb-gallery-bg.png') no-repeat top left;
+  float:left;
+}
+#right_col #thumbs ul{
+  list-style:none;
+  float:left;
+  position:relative;
+}
+#right_col #thumbs ul li{
+  float:left;
+  position:relative;
+  margin:0 2px 0 0;
+}
+#right_col #thumbs ul li a{
+  display:inline-block;
+  width:75px;
+  height:75px;
+  border:2px solid #000;
+}
+#right_col #thumbs ul li a img{
+  float:left;
+}
+#right_col #thumbs .next, 
+#right_col #thumbs .prev{
+  height:115px;
+  width:35px;
+  padding:0;
+  position:absolute;
+  text-decoration:none;  
+}
+#right_col #thumbs .next{
+  top:0;
+  right:-5px;
+  background:transparent url('/assets/wtl-gallery-next.gif') no-repeat -2px 48px;    
+}
+#right_col #thumbs .prev{
+  top:0;
+  left:-5px;
+  background:transparent url('/assets/wtl-gallery-prev.gif') no-repeat left 48px;
+}
+
+/* IE 6 HACKS !!!! */
+*html #footer{overflow:hidden;}
+*html #floral_bottom{margin-top:-18px;}
+*html #content{height:650px;}
+*html #menu ul.sub_menu li a.sub_link:hover{
+  background:transparent;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/assets/wtl-submenu-bg-hover.png', sizingMethod='crop');
+}
