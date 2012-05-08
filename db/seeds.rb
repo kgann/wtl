@@ -5,3 +5,18 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# Artists
+[
+  {
+    :email => "kylegann@gmail.com",
+    :first_name => "Kyle", 
+    :last_name => "Gann",
+  }
+].each do |attr|
+  a = Artist.new(attr)
+  a.username = "kgann"
+  a.password = "test"
+  a.salt = "abc"
+  a.save
+end

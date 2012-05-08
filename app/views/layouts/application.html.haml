@@ -10,15 +10,36 @@
   %body
     #wrapper
       #header
-        %h1
-          =link_to image_tag( 'walk-the-line.png'), root_path
+        %h1=link_to image_tag( 'walk-the-line.png'), root_path
         #photo_loop_click
         #artist_photo
           / <img src="<?php echo PHOTO_LOOP_DIR.$artist_pic['filename']?>" title="<?php echo $artist_pic['title'] ?>"/>
         #photo_loop
       #left_col
         #menu
-          #main
+          %ul#main
+            %li
+              =link_to 'Artists', '#', :class => 'header with_sub'
+              -@artists.each do |artist|
+                %ul#artists.sub_menu
+                  %li=link_to artist.get_name, 'root_path', :class => 'sub_link'
+            %li=link_to 'FAQ', 'faq_path', :class => 'header'
+        / <a href="#" class="header with_sub <?php if($page->is_artist) echo "active"?>">Artists</a>
+        / <ul id="artists" class="sub_menu <?php if($page->is_artist) echo "active"?>">
+        /   <?php foreach($page->get_artists() AS $artist): ?>
+        /     <li><a href="<?php echo $artist['url'] ?>" class="sub_link"><?php echo $artist['display_name'] ?></a></li>
+        /   <?php endforeach; ?>
+        /             </ul>
+        /           </li>
+        /           <li>
+        / <a href="#" class="header with_sub <?php if($page->is_store) echo "active"?>">Store</a>
+        /             <ul id="store" class="sub_menu <?php if($page->is_store) echo "active"?>">
+        /   <?php foreach($page->get_store_categories() AS $cat): ?>
+        /     <li><a href="<?php echo $cat['url'] ?>" class="sub_link"><?php echo $cat['name'] ?></a></li>
+        /   <?php endforeach; ?>
+        /             </ul>
+        /           </li>
+        /           <li><a href="/faq" class="header <?php if($page->is_faq) echo "active"?>">FAQ</a></li>
         #contact
         #social
       #content
@@ -27,8 +48,7 @@
       #footer_wrapper
         #footer
           %p
-            %span.left
-              ="&#169;#{Time.now.year} Walk The Line Tattoo Co.".html_safe
+            %span.left="&#169;#{Time.now.year} Walk The Line Tattoo Co.".html_safe
             %span.right OutlandishLabs.com
           #floral_bottom
     
