@@ -12,18 +12,16 @@
       #header
         %h1=link_to image_tag( 'walk-the-line.png'), root_path
         #photo_loop_click
-        #artist_photo
-          / <img src="<?php echo PHOTO_LOOP_DIR.$artist_pic['filename']?>" title="<?php echo $artist_pic['title'] ?>"/>
-        #photo_loop
+      #artist_photo
+        / <img src="<?php echo PHOTO_LOOP_DIR.$artist_pic['filename']?>" title="<?php echo $artist_pic['title'] ?>"/>
+      #photo_loop
+        -@photo_loop_images.each do |img|
+          =link_to image_tag("photo_loop/#{img.filename}", :alt => 'Walk The Line Tattoo Co.'), image_path("fullsize/#{img.filename}"), :title => "img.title"
       #left_col
         #menu
           %ul#main
-            %li
-              =link_to 'Artists', '#', :class => 'header with_sub'
-              -@artists.each do |artist|
-                %ul#artists.sub_menu
-                  %li=link_to artist.get_name, 'root_path', :class => 'sub_link'
-            %li=link_to 'FAQ', 'faq_path', :class => 'header'
+            =render :partial => 'layouts/artists_menu', :locals => { :artists => @artists }
+            =render :partial => 'layouts/faq_menu'
         / <a href="#" class="header with_sub <?php if($page->is_artist) echo "active"?>">Artists</a>
         / <ul id="artists" class="sub_menu <?php if($page->is_artist) echo "active"?>">
         /   <?php foreach($page->get_artists() AS $artist): ?>

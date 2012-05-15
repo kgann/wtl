@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120508022225) do
+ActiveRecord::Schema.define(:version => 20120515041238) do
 
   create_table "artists", :force => true do |t|
     t.string   "first_name"
@@ -23,6 +23,19 @@ ActiveRecord::Schema.define(:version => 20120508022225) do
     t.string   "salt",       :limit => 3,  :null => false
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
+  end
+
+  create_table "artists_images", :id => false, :force => true do |t|
+    t.integer "artist_id"
+    t.integer "image_id"
+  end
+
+  create_table "images", :force => true do |t|
+    t.string   "filename"
+    t.boolean  "photo_loop"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "artist_id"
   end
 
 end

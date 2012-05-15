@@ -13,3 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require cycle
+//= require fancy_box
+//= require galleriffic
+//= require rollover
+//= require pngfix
+//= require wtl

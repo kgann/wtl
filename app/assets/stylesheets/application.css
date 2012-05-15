@@ -205,7 +205,7 @@ body{
 #menu ul li a.header{
   width:202px;
   height:35px;
-  padding: 16px 0 0 0;
+  padding: 20px 0 0 0;
   color:#D1C8A1;
   font-weight:bold;
   font-size:22px;
@@ -218,7 +218,7 @@ body{
 }
 #menu ul li a.header:hover,
 #menu ul li a.header.active{
-  padding: 16px 6px 0 2px;
+  padding: 20px 6px 0 2px;
   margin:2px 0 -2px 0;
   text-decoration:none;
   background:transparent url('/assets/wtl-menu-bg-hover.png') no-repeat left top;
@@ -239,7 +239,7 @@ body{
   width:183px;
   padding:0;
   margin:0;
-  height:32px;
+  height:25px;
   border-bottom:3px double #000000;
 }
 #menu ul.sub_menu li.first{
@@ -259,7 +259,7 @@ body{
 }
 #menu ul.sub_menu li a.sub_link:hover{
   text-decoration:none;
-  background:transparent url('/assets/wtl-submenu-bg-hover.png') no-repeat top left;
+  background:transparent url('/assets/wtl-submenu-bg-hover.png') no-repeat left -4px;
 }
 
 /**********

@@ -1,0 +1,5 @@
+%li
+  =link_to 'Artists', '#', :class => 'header with_sub'
+  %ul#artists.sub_menu{:class => active?("artists") }
+    -artists.each do |artist|
+      %li=link_to artist.get_name, artist_path(:id => artist.id), :class => 'sub_link'

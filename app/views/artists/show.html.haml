@@ -1,0 +1,14 @@
+%h2=@artist.get_name
+#gallery_wrapper
+#thumbs.navigation
+  %ul.thumbs
+    -@artist.images.each do |img|
+      %li=link_to image_tag("thumbs/#{img.filename}", :alt => 'img.title'), image_path("gallery/#{img.filename}"), :class => 'thumb', :title => 'title', :data => {:full => image_path("fullsize/#{img.filename}")}
+  %a.pageLink.prev{:title => "Previous Page"}
+  %a.pageLink.next{:title => "Next Page"}
+#gallery.content
+  #gallery_buttons
+    #controls.controls
+  .slideshow-container
+    #loading.loader
+    #slideshow.slideshow
