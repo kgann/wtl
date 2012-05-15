@@ -4,7 +4,7 @@ class NewsController < ApplicationController
   def show
     month, year = params[:id].split("_")
     month = Date::ABBR_MONTHNAMES.index(month)
-    @posts = Post.where("date_part('month', created_at) = '#{month}' AND date_part('year', created_at) = '#{year}'").order(:created_at)
+    @posts = Post.where("date_part('month', created_at) = '#{month}' AND date_part('year', created_at) = '#{year}'").order("created_at desc")
   end
 
   def archive

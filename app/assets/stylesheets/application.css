@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require fancybox.css
 */
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126

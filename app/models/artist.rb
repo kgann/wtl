@@ -1,5 +1,5 @@
 class Artist < ActiveRecord::Base
-  attr_accessible :usernme, :email, :first_name, :last_name, :nickname
+  attr_accessible :email, :first_name, :last_name, :nickname, :profile_image_id
   has_many :images
   has_many :items
   has_many :posts
@@ -10,10 +10,11 @@ class Artist < ActiveRecord::Base
 
   def get_name
     display_name = [first_name]
-    display_name << "'#{nickname}'" if nickname
+    display_name << "'#{nickname}'" unless nickname.blank?
     display_name << last_name
     display_name.join(" ")
   end
+  alias :name :get_name # for active admin
 
   def profile_image
     Image.find(profile_image_id) if profile_image_id

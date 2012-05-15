@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @posts = Post.limit(3)
+    @posts = Post.order("created_at desc").limit(3)
     render :template => 'news/show'
   end
 end

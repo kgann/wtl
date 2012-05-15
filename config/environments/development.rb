@@ -37,4 +37,6 @@ Wtl::Application.configure do
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = true
+
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
