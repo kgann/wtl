@@ -1,0 +1,7 @@
+%form{:action => 'https://www.paypal.com/cgi-bin/webscr', :target => '_blank', :name => '_xclick'}
+  %input{:hidden => true, :name => 'cmd', :value => '_xclick'}
+  %input{:hidden => true, :name => 'business', :value => artist_email}
+  %input{:hidden => true, :name => 'currency_code', :value => 'USD'}
+  %input{:hidden => true, :name => 'item_name', :value => item_name}
+  %input{:hidden => true, :name => 'amount', :value => item_price}
+  %input{:type => 'image', :src => image_path('buy-now-new.png'), :border => '0', :name => 'submit', :alt => "Make payments with PayPal - it's fast, free and secure!"}

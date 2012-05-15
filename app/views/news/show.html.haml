@@ -1,0 +1,9 @@
+-@posts.each do |post|
+  .post
+    %h3=post.title
+    %h4.info
+      %span.name=link_to post.artist.get_name, artist_path(post.artist)
+      %span.date=post.created_at.strftime("%B, %Y at %l:%M%P")
+    =post.body.split("\n").map{ |p| content_tag(:p, p) }.join.html_safe
+    -post.images.each do |img|
+      =link_to image_tag("thumbs/#{img.filename}", :alt => img.title), image_path("fullsize/#{img.filename}"), :class => 'img', :title => img.title

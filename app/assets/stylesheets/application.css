@@ -344,7 +344,7 @@ body{
   font-style:italic;
 }
 
-#right_col div.post a{
+#right_col div.post a.img{
   display:inline-block;
   width:75px;
   height:75px;
@@ -356,9 +356,10 @@ body{
 ************/
 #right_col div.item{
   margin:0 0 25px 0;
+  padding:10px 0 0 0;
 }
 #right_col div.item h3{
-    border-bottom:3px double #000000;
+  border-bottom:3px double #000000;
   margin:15px 0 0 0;
   padding:0 0 5px 0;
 }
@@ -385,8 +386,12 @@ body{
   float:right
 }
 
-#right_col div.item a,
-#right_col div.post a{
+#right_col div.item p{
+  padding-top:15px;
+}
+
+#right_col div.item a.img,
+#right_col div.post a.img{
   display:inline-block;
   width:75px;
   height:75px;

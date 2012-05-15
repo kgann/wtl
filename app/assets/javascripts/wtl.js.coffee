@@ -6,7 +6,7 @@ class Wtl
     $(window).load ->
       $('#gallery_wrapper').fadeIn('slow')
     $ =>
-      @fancyBoxItems = $('.post a, .item a')
+      @fancyBoxItems = $('.post a.img, .item a.img')
       @photoLoop = $('#photo_loop')
       @photoLoopClick = $("#photo_loop_click")
       @gallery = $('#thumbs')

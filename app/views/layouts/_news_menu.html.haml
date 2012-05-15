@@ -1,0 +1,5 @@
+%li
+  =link_to 'News', '#', :class => "header with_sub #{active?("news")}"
+  %ul#news.sub_menu{:class => active?("news") }
+    -dates.each do |date|
+      %li=link_to date, news_path(format date), :class => 'sub_link'

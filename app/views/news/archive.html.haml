@@ -1,0 +1,4 @@
+%h2 News Archives
+-@archive_dates.each do |date|
+  %h3.archive
+    =link_to date, news_path(format date)

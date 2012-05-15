@@ -1,0 +1,5 @@
+%li
+  =link_to 'Store', '#', :class => "header with_sub #{active?("categories")}"
+  %ul#store.sub_menu{:class => active?("categories") }
+    -categories.each do |cat|
+      %li=link_to cat.name, category_path(cat), :class => 'sub_link'
