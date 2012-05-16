@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :fetch_artists, :fetch_photo_loop_images, :fetch_categories, :fetch_news_dates
 
   def fetch_artists
-    @artists = Artist.order(:first_name)
+    @artists = Artist.order(:first_name).where(:active => true)
   end
 
   def fetch_photo_loop_images

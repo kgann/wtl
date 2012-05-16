@@ -9,13 +9,21 @@ ActiveAdmin.register Post do
     default_actions
   end
 
-  form do |f|
+  form :html => { :multipart => true } do |f|
     f.inputs "Post" do
       f.input :artist
       f.input :title
       f.input :body
+      f.input :images, :input_html => { :class => 'img_select' }
     end
     f.buttons
   end
+
+  # # cntroller override
+  # controller do
+  #   def create
+  #     raise params[:post].to_s
+  #   end
+  # end
 
 end

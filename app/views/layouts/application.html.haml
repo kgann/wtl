@@ -14,7 +14,7 @@
         #photo_loop_click
       #photo_loop
         -@photo_loop_images.each do |img|
-          =link_to image_tag("photo_loop/#{img.filename}", :alt => 'Walk The Line Tattoo Co.'), image_path("fullsize/#{img.filename}"), :title => img.title
+          =link_to image_tag(img.asset.url(:photo_loop), :alt => 'Walk The Line Tattoo Co.'), image_path(img.asset.url), :title => img.title
       #left_col
         #menu
           %ul#main

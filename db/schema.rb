@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120515185536) do
+ActiveRecord::Schema.define(:version => 20120516042730) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -50,10 +50,11 @@ ActiveRecord::Schema.define(:version => 20120515185536) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "nickname"
-    t.string   "email",            :null => false
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.string   "email",                              :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.integer  "profile_image_id"
+    t.boolean  "active",           :default => true
   end
 
   create_table "artists_images", :id => false, :force => true do |t|
@@ -75,14 +76,17 @@ ActiveRecord::Schema.define(:version => 20120515185536) do
   end
 
   create_table "images", :force => true do |t|
-    t.string   "filename"
     t.boolean  "photo_loop"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "artist_id"
     t.integer  "item_id"
     t.integer  "post_id"
     t.string   "title"
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
   end
 
   create_table "items", :force => true do |t|

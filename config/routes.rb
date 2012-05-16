@@ -12,5 +12,7 @@ Wtl::Application.routes.draw do
   match "news/Archive" => "news#archive"
   resources :news, :only => [:show, :index]
 
+  match "images/thumb_path/:id" => "images#thumb_path"
+
   root :to => 'home#index'
 end

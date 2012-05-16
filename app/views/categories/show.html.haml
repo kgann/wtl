@@ -9,7 +9,7 @@
       %span.price=number_to_currency(item.price)
     %p=item.description
     -item.images.each do |img|
-      =link_to image_tag("thumbs/#{img.filename}", :alt => img.title), image_path("fullsize/#{img.filename}"), :class => 'img', :title => img.title
+      =link_to image_tag(img.asset.url(:thumb), :alt => img.title), image_path(img.asset.url), :class => 'img', :title => img.title
 
 
 

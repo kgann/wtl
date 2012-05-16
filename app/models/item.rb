@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  attr_accessible :category_id, :artist_id, :price, :description, :name
+  attr_accessible :category_id, :artist_id, :price, :description, :name, :asset, :image_ids
   belongs_to :category
   belongs_to :artist
   has_many :images
