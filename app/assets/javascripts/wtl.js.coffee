@@ -100,7 +100,7 @@ class Wtl
 
   setupCycle: =>
     @photoLoop.cycle
-      fx: 'uncover', speed: 1000, timeout: 3000
+      fx: 'uncover', speed: 800, timeout: 6000
 
   setupMenuItems: ->
     $('#menu ul.sub_menu li:first-child').addClass 'first'

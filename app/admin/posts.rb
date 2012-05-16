@@ -11,9 +11,9 @@ ActiveAdmin.register Post do
 
   form :html => { :multipart => true } do |f|
     f.inputs "Post" do
-      f.input :artist
-      f.input :title
-      f.input :body
+      f.input :artist, :required => true
+      f.input :title, :required => true
+      f.input :body, :required => true
       f.input :images, :input_html => { :class => 'img_select' }
     end
     f.buttons

@@ -25,6 +25,6 @@ class ImageController
           img_container.find("img[data-id=\"#{id}\"]").remove()
 
   initPreviouslyAddedImages: ->
-    @imageControllers.find('option').click()
+    @imageControllers.find('option:selected').click()
 
 new ImageController()

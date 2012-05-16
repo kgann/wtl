@@ -9,8 +9,6 @@ gem 'pg'
 
 gem 'haml'
 
-gem 'uuidtools'
-
 gem 'activeadmin'
 
 gem "paperclip", "~> 3.0"

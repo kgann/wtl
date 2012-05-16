@@ -3,40 +3,12 @@
   -@category.items.each do |item|
     %h3
       =item.name
-      %span.artist_name=item.artist.get_name
+      %span.artist_name
+        by
+        =link_to item.artist.get_name, artist_path(item.artist)
     %h4.info
       %span.buy_now=render :partial => 'categories/paypal_form', :locals => {:artist_email => item.artist.email, :item_name => item.name, :item_price => item.price}
       %span.price=number_to_currency(item.price)
-    %p=item.description
+    =render_blob item.description
     -item.images.each do |img|
       =link_to image_tag(img.asset.url(:thumb), :alt => img.title), image_path(img.asset.url), :class => 'img', :title => img.title
-
-
-
-
-
-/   <div class="item">
-/     <h3><?php echo $item['name']?><span class="artist_name"><?php echo $item['display_name'] ?></span></h3>
-/     <h4 class="info"> 
-/     <span class="buy_now">
-/       <form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-/           <input type="hidden" name="cmd" value="_xclick">
-/           <input type="hidden" name="business" value="<?php echo $item['artist_email']?>">
-/           <input type="hidden" name="currency_code" value="USD">
-/           <input type="hidden" name="item_name" value="<?php echo $item['name']?>">
-/           <input type="hidden" name="amount" value="<?php echo $item['price'] ?>">
-/           <input type="image" src="/images/buy-now.png" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
-/         </form>
-/     </span>
-/     <span class="price"><?php echo $item['price'] ?> -</span>
-/   </h4>
-/   <?php foreach($item['paragraphs'] AS $p): ?>
-/     <p><?php echo $p ?></p>
-/     <?php endforeach; ?>
-/   <?php foreach($item['images'] AS $img): ?>
-/     <a href="<?php echo FULLSIZE_DIR.$img['filename']?>" title="<?php echo $img['title']?>">
-/       <img src="<?php echo THUMB_DIR.$img['filename']?>" alt="<?php echo $img['title']?>" />
-/     </a>
-/   <?php endforeach; ?>
-/   </div>
-/ <?php endforeach; ?>

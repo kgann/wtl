@@ -4,6 +4,6 @@
     %h4.info
       %span.name=link_to post.artist.get_name, artist_path(post.artist)
       %span.date=post.created_at.strftime("%B, %Y at %l:%M%P")
-    =post.body.split("\n").map{ |p| content_tag(:p, p) }.join.html_safe
+    =render_blob post.body
     -post.images.each do |img|
       =link_to image_tag(img.asset.url(:thumb), :alt => img.title), image_path(img.asset.url), :class => 'img', :title => img.title

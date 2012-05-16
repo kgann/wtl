@@ -1,4 +1,5 @@
 ActiveAdmin.register AdminUser do
+  menu :parent => "Users", :label => "Administrators"
   index do
     column :email
     column :current_sign_in_at
@@ -9,7 +10,7 @@ ActiveAdmin.register AdminUser do
 
   form do |f|
     f.inputs "Admin Details" do
-      f.input :email
+      f.input :email, :required => true
     end
     f.buttons
   end

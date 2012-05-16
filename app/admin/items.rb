@@ -1,12 +1,12 @@
 ActiveAdmin.register Item do
-  menu :label => "Store Items"
+  menu :label => "Store Items", :parent => "The Store"
 
   form :html => { :multipart => true } do |f|
     f.inputs "Item" do
-      f.input :category, :hint => "Add a new category, in categories, if you need to"
-      f.input :artist, :hint => "The artist you choose determines the pay-pal account used for a purchase"
-      f.input :name
-      f.input :description
+      f.input :category, :required => true, :hint => "Add a new category [The Store > Categories] if you need to"
+      f.input :artist, :required => true, :hint => "The artist you choose determines the pay-pal account used for a purchase"
+      f.input :name, :required => true
+      f.input :description, :required => true
       f.input :images, :input_html => { :class => 'img_select' }
     end
     f.buttons

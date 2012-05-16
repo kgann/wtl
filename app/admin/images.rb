@@ -1,4 +1,5 @@
 ActiveAdmin.register Image do
+  menu :priority => 15
   scope :in_photo_loop, :default => false do |images|
     images.where(:photo_loop => :true)
   end
@@ -9,7 +10,7 @@ ActiveAdmin.register Image do
 
   form do |f|
     f.inputs "Image" do
-     f.input :title
+     f.input :title, :required => true
      f.input :photo_loop
      f.input :asset, :as => :file
     end

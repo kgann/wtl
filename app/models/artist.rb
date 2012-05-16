@@ -1,5 +1,5 @@
 class Artist < ActiveRecord::Base
-  attr_accessible :email, :first_name, :last_name, :nickname, :profile_image_id, :asset, :image_ids, :active
+  attr_accessible :email, :first_name, :last_name, :nickname, :profile_image_id, :asset, :image_ids, :active, :bio
   has_many :images
   has_many :items
   has_many :posts

@@ -17,4 +17,15 @@ module ApplicationHelper
     HTML
   end
 
+  def render_blob(blob, tag=:p)
+    blob.gsub(/\r\n+/, "\n").split("\n").reject{ |t| t.empty? }.map do |paragraph| 
+      content_tag(tag, paragraph)
+    end.join("\n").html_safe
+  end
+
+  def render_bio(bio)
+    return unless bio
+    "<h4>Background</h4>".html_safe << render_blob(bio)
+  end
+
 end

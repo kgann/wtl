@@ -1,3 +1,4 @@
 -@faqs.each do |faq|
-  %h2=faq.question
-  %p=faq.answer
+  .faq.post
+    %h3=faq.question
+    %p=render_blob faq.answer
