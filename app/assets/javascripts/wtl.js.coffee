@@ -15,8 +15,9 @@ class Wtl
 
       # order is important!
       @setupMenuClicks()
-      @setupGalleriffic() if @gallery.length > 0 && @gallery.find("ul.thumbs li").length > 0
-      @setupCustomPrevNextGalleriffic()
+      if @gallery.length > 0 && @gallery.find("ul.thumbs li").length > 0
+        @setupCustomPrevNextGalleriffic()
+        @setupGalleriffic() 
       @setupCycle()
       @setupPhotoLoopHover()
       @setupPhotoLoopClick()
@@ -24,8 +25,8 @@ class Wtl
       @setupMenuItems()
       @setupFancyBox()
 
-      @opaqueElements = $('#thumbs ul.thumbs li, div.navigation a.pageLink')
-      @setupOpacityRollover()
+      # @opaqueElements = $('#thumbs ul.thumbs li, div.navigation a.pageLink')
+      # @setupOpacityRollover()
 
   modifyContentHeight: ->
     # set content height to window height for large brosers
