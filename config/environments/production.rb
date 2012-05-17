@@ -67,4 +67,6 @@ Wtl::Application.configure do
 
   config.assets.precompile += %w[active_admin.css active_admin/print.css active_admin.js]
 
+  config.action_mailer.default_url_options = { :host => 'walkthelinetattoos.com' }
+
 end
