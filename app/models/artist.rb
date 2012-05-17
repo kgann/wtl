@@ -1,6 +1,6 @@
 class Artist < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name, :nickname, :profile_image_id, :asset, :image_ids, :active, :bio
-  has_many :images
+  has_and_belongs_to_many :images
   has_many :items
   has_many :posts
   has_one :image, :as => :profile_image, :conditions => ['where id = artist.profile_image_id']
