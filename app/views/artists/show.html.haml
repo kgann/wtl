@@ -1,5 +1,5 @@
 %h2=@artist.get_name
-=render_bio @artist.bio
+=render_bio(@artist.bio) unless @artist.bio.empty?
 =render_portfolio(@artist) do
   %h4 Portfolio
   #gallery_wrapper
