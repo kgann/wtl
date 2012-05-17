@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def fetch_news_dates
-    sql = "distinct date_part('month', created_at) AS month, date_part('year', created_at) AS year"
+    sql = "distinct MONTH(created_at) AS month, YEAR(created_at) AS year"
     @dates = Post.select(sql).order(:month, :year).limit(5).reduce([]) do |arr, date|
       arr << "#{Date::MONTHNAMES[date.month.to_i]}, #{date.year}"
     end << "Archive"

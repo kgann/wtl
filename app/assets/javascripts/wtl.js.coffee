@@ -6,6 +6,7 @@ class Wtl
     $(window).load ->
       $('#gallery_wrapper').fadeIn('slow')
     $ =>
+      @modifyContentHeight() # for large browsers
       @fancyBoxItems = $('.post a.img, .item a.img')
       @photoLoop = $('#photo_loop')
       @photoLoopClick = $("#photo_loop_click")
@@ -24,6 +25,10 @@ class Wtl
       @setupPhotoLoopFancyBox()
       @setupMenuItems()
       @setupFancyBox()
+
+  modifyContentHeight: ->
+    # set content height to window height for large brosers
+    $('#content').css 'min-height' : "#{$(window).height() - $('#footer_wrapper').height()}px"
 
   setupMenuClicks: ->
     $('#menu ul#main a.header.with_sub').click (e) =>

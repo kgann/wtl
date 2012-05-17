@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def get_shop_info
-    shop_info = ShopInfo.last
+    return "" unless shop_info = ShopInfo.last
     html = <<-HTML
       <p>
         #{shop_info.address}<br />

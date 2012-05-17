@@ -1,4 +1,4 @@
-ActiveAdmin.register Image do
+ActiveAdmin.register Image, {:sort_order => "id_desc"} do
   menu :priority => 15
   scope :in_photo_loop, :default => false do |images|
     images.where(:photo_loop => :true)

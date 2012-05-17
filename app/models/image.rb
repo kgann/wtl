@@ -4,5 +4,7 @@ class Image < ActiveRecord::Base
   belongs_to :item
   belongs_to :artist
 
+  validates_presence_of :title
+
   has_attached_file :asset, :styles => { :gallery => "450x450#", :thumb => "75x75#", :photo_loop => "310x240#" }
 end

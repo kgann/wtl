@@ -29,6 +29,7 @@ ActiveAdmin.register Artist do
       f.input :last_name, :required => true
       f.input :nickname, :hint => 'If you wanna be like Radar'
       f.input :bio
+      f.input :email
       f.input :active
       f.input :profile_image_id, :label => "Profile Image ID", :hint => "Lookup the ID in the images section. If blank, the photo loop will be displayed"
       f.input :images, :label => "Portfolio", :input_html => { :class => 'img_select' }
