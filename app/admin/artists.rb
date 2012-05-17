@@ -2,11 +2,11 @@ ActiveAdmin.register Artist do
   menu :parent => "Users"
 
   scope :active, :default => true do |artists|
-    artists.where(:active => :true)
+    artists.where(:active => true)
   end
 
    scope :inactive, :default => false do |artists|
-     artists.where(:active => :false)
+     artists.where(:active => false)
    end
 
   controller do
