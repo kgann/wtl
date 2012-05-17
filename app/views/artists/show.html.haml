@@ -1,17 +1,3 @@
 %h2=@artist.get_name
 =render_bio(@artist.bio) unless @artist.bio.empty?
-=render_portfolio(@artist) do
-  %h4 Portfolio
-  #gallery_wrapper
-  #thumbs.navigation
-    %ul.thumbs
-      -@artist.images.each do |img|
-        %li=link_to image_tag(img.asset.url(:thumb), :alt => img.title), image_path(img.asset.url(:gallery)), :class => 'thumb', :title => img.title, :data => {:full => image_path(img.asset.url)}
-    %a.pageLink.prev{:title => "Previous Page"}
-    %a.pageLink.next{:title => "Next Page"}
-  #gallery.content
-    #gallery_buttons
-      #controls.controls
-    .slideshow-container
-      #loading.loader
-      #slideshow.slideshow
+=render_portfolio(@artist)
