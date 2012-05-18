@@ -18,7 +18,7 @@ development:
   database: wtl_development
   pool: 5
   username: root
-  password: gH12#45-vd12
+  password: temp!@#$
   socket: /tmp/mysql.sock
 
   # Connect on a TCP socket. Omitted by default since the client uses a

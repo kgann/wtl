@@ -1,10 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :fetch_artists, :fetch_photo_loop_images, :fetch_categories, :fetch_news_dates
+  before_filter :fetch_artists, :fetch_photo_loop_images, :fetch_categories, :fetch_news_dates, :fetch_links
 
   def fetch_artists
     @artists = Artist.order(:first_name).where(:active => true)
+  end
+
+  def fetch_links
+    @links = Link.all
   end
 
   def fetch_photo_loop_images

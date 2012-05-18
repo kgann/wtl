@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120517175130) do
+ActiveRecord::Schema.define(:version => 20120518041059) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(:version => 20120517175130) do
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "artists", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "first_name",                         :null => false
+    t.string   "last_name",                          :null => false
     t.string   "nickname"
     t.string   "email",                              :null => false
     t.datetime "created_at",                         :null => false
@@ -64,48 +64,72 @@ ActiveRecord::Schema.define(:version => 20120517175130) do
   end
 
   create_table "categories", :force => true do |t|
-    t.string   "name"
+    t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "faqs", :force => true do |t|
-    t.string   "question"
-    t.text     "answer"
+    t.string   "question",   :null => false
+    t.text     "answer",     :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "images", :force => true do |t|
-    t.boolean  "photo_loop"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.integer  "artist_id"
-    t.integer  "item_id"
-    t.integer  "post_id"
-    t.string   "title"
+    t.boolean  "photo_loop",         :default => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+    t.string   "title",                                 :null => false
     t.string   "asset_file_name"
     t.string   "asset_content_type"
     t.integer  "asset_file_size"
     t.datetime "asset_updated_at"
   end
 
+  create_table "images_items", :id => false, :force => true do |t|
+    t.integer "item_id"
+    t.integer "image_id"
+  end
+
+  create_table "images_posts", :id => false, :force => true do |t|
+    t.integer "post_id"
+    t.integer "image_id"
+  end
+
   create_table "items", :force => true do |t|
-    t.integer  "category_id"
-    t.integer  "price"
-    t.integer  "artist_id"
-    t.text     "description"
+    t.integer  "category_id", :null => false
+    t.integer  "price",       :null => false
+    t.integer  "artist_id",   :null => false
+    t.text     "description", :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "name"
+    t.string   "name",        :null => false
+  end
+
+  create_table "items_images", :id => false, :force => true do |t|
+    t.integer "item_id"
+    t.integer "image_id"
+  end
+
+  create_table "links", :force => true do |t|
+    t.string   "url",        :null => false
+    t.string   "text",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "posts", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.integer  "artist_id"
+    t.string   "title",      :null => false
+    t.text     "body",       :null => false
+    t.integer  "artist_id",  :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "posts_images", :id => false, :force => true do |t|
+    t.integer "post_id"
+    t.integer "image_id"
   end
 
   create_table "shop_info", :force => true do |t|

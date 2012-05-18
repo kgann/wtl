@@ -1,30 +1,33 @@
 class ImageController
   constructor: ->
     $ =>
-      @imageControllers = $("select.img_select")
+      @imageController = $("select.img_select")
       @initImageControllers()
       @initPreviouslyAddedImages()
 
   initImageControllers: ->
-    for select in @imageControllers
-      img_container = $("<div class='images_container'></div>")
-      $(select).parent().append img_container
-      $(select).find('option').bind 'click', (e) =>
-        self = $(e.currentTarget)
-        id = self.val()
-        if self.is(':selected')
-          if img_container.find("img[data-id=\"#{id}\"]").length == 0
-            $.post "/images/thumb_path/#{id}", (path) =>
-              img = $("<img src='#{path}' data-id='#{id}'>")
-              img_container.append(img)
-              img.bind 'click', (e) =>
-                self = $(e.currentTarget)
-                @imageControllers.find("option[value=\"#{self.data('id')}\"]").removeAttr("selected")
-                img.remove()
-        else
-          img_container.find("img[data-id=\"#{id}\"]").remove()
+    img_container = $("<div class='images_container'></div>")
+    @imageController.parent().append img_container
+    @imageController.bind 'change', (e) =>
+      options = @imageController.find("option").map( -> { img_id: $(@).val(), is_selected: $(@).is(':selected') } )
+      for opt in options
+        image = img_container.find("img[data-id=\"#{opt.img_id}\"]")
+        console.log image
+        if image.length == 0 and opt.is_selected
+          $.getJSON "/images/thumb_path/#{opt.img_id}", (i) =>
+            img = $("<img src='#{i.url}' data-id='#{i.id}'>")
+            img_container.append img
+            @bindImageClick(img)
+        else if image.length > 0 and not opt.is_selected
+          image.remove()
+
+  bindImageClick: (img) ->
+    img.bind 'click', (e) =>
+      self = $(e.currentTarget)
+      @imageController.find("option[value=\"#{self.data('id')}\"]").removeAttr("selected")
+      self.remove()
 
   initPreviouslyAddedImages: ->
-    @imageControllers.find('option:selected').click()
+    @imageController.trigger 'change'
 
 new ImageController()

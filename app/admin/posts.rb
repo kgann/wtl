@@ -14,7 +14,7 @@ ActiveAdmin.register Post do
       f.input :artist, :required => true
       f.input :title, :required => true
       f.input :body, :required => true
-      f.input :images, :input_html => { :class => 'img_select' }
+      f.input :images, :input_html => { :class => 'img_select' }, :hint => "Hold ctrl to select multiple images"
     end
     f.buttons
   end

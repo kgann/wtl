@@ -22,6 +22,7 @@
             =render :partial => 'layouts/news_menu', :locals => { :dates => @dates }
             =render :partial => 'layouts/categories_menu', :locals => { :categories => @categories }
             =render :partial => 'layouts/faq_menu'
+            =render :partial => 'layouts/links', :locals => { :links => @links }
         #contact=get_shop_info.html_safe
         =render :partial => 'layouts/social'
       #content

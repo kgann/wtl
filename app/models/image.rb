@@ -1,8 +1,8 @@
 class Image < ActiveRecord::Base
-  attr_accessible :post_id, :item_id, :filename, :title, :photo_loop, :asset
-  belongs_to :post
-  belongs_to :item
-  has_and_belongs_to_many :artist
+  attr_accessible :filename, :title, :photo_loop, :asset
+  has_and_belongs_to_many :posts
+  has_and_belongs_to_many :items
+  has_and_belongs_to_many :artists
 
   validates_presence_of :title
 

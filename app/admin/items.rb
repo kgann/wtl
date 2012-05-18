@@ -8,7 +8,7 @@ ActiveAdmin.register Item do
       f.input :name, :required => true
       f.input :price
       f.input :description, :required => true
-      f.input :images, :input_html => { :class => 'img_select' }
+      f.input :images, :input_html => { :class => 'img_select' }, :hint => "Hold ctrl to select multiple images"
     end
     f.buttons
   end

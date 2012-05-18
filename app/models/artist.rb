@@ -7,6 +7,8 @@ class Artist < ActiveRecord::Base
 
   accepts_nested_attributes_for :images
 
+  validates_presence_of :first_name, :last_name, :email
+
   def to_param
     "#{first_name}_#{last_name}"
   end
