@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def fetch_links
-    @links = Link.all
+    @link_set = Link.all
   end
 
   def fetch_photo_loop_images
