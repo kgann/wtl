@@ -422,11 +422,19 @@ body{
   text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
 }
 
-#footer p{
+#footer p, #footer p a{
   color:#D1C8A1;
   font-size:13px;
   font-weight:bold;
   padding:10px;
+  z-index:1000;
+  position:relative;
+}
+#footer p a{
+  text-decoration:none;
+}
+#footer p a:hover{
+  text-decoration:underline;
 }
 #footer p .left{
   float:left;
