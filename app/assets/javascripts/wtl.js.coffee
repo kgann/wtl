@@ -18,7 +18,7 @@ class Wtl
       if @gallery.length > 0 && @gallery.find("ul.thumbs li").length > 0
         @setupCustomPrevNextGalleriffic()
         @setupGalleriffic() 
-      @setupCycle()
+      @setupCycle() if @photoLoop.find("a").length > 0
       @setupPhotoLoopHover()
       @setupPhotoLoopClick()
       @setupPhotoLoopFancyBox()
