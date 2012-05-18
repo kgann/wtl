@@ -3,3 +3,4 @@ log/*.log
 tmp/**/*
 wtl__/*
 public/system/*
+public/assets/*
