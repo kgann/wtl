@@ -63,5 +63,7 @@ module Wtl
     config.assets.version = '1.0'
 
     config.assets.initialize_on_precompile = false
+
+    config.time_zone = 'Eastern Time (US & Canada)'
   end
 end
