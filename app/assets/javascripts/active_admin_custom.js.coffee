@@ -43,7 +43,7 @@ class ImageController
   bindImgClick: (img) ->
     img.bind 'click', (e) =>
       self = $(e.currentTarget)
-      @form.find("input[value=\"#{self.data('id')}\"]").remove()
+      @form.find("input[name=\"#{@inputName}\"][value=\"#{self.data('id')}\"]").remove()
       self.remove()
 
 new ImageController()
