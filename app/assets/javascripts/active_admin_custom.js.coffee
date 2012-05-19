@@ -7,7 +7,7 @@ class ImageController
       @imageSelect = $("select.img_select")
       @imgData = @imageSelect.find("option").map ->
         self = $(this)
-        text: self.text(), value: self.val(), descrption: null, imageSrc: self.attr("title"), selected: self.is(":selected")
+        value: self.val(), descrption: null, imageSrc: self.attr("title"), selected: self.is(":selected")
       @inputName = @imageSelect.attr("name")
       @imageSelect.parent().html(@selectUI)
       @setupImageSelector()
@@ -25,12 +25,12 @@ class ImageController
   setupImageSelector: =>
     @selectUI.ddslick
       data: @imgData
-      width: 200
+      width: 100
       height: 300
       imagePosition: "left"
-      selectText: "Add image..."
+      selectText: "Add Image"
       onSelected: (data) =>
-        @selectUI.find(".dd-selected").html("Add image...")
+        @selectUI.find(".dd-selected").html("Add Image")
         existing_img = @imgContainer.find("img[data-id=\"#{data.selectedData.value}\"]")
         if existing_img.length == 0
           img = $("<img src='#{data.selectedData.imageSrc}' data-id='#{data.selectedData.value}'>")
