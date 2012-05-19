@@ -8,7 +8,7 @@ ActiveAdmin.register Item do
       f.input :name, :required => true
       f.input :price
       f.input :description, :required => true
-      f.input :images, :input_html => { :class => 'img_select' }, :hint => "Hold ctrl to select multiple images"
+      f.input :images, :collection => Image.all.map{ |img| [img.title, img.id, {:title => img.asset.url(:thumb)}] }, :input_html => { :class => 'img_select' }, :hint => "Hold ctrl to select multiple images"
     end
     f.buttons
   end

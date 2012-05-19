@@ -127,4 +127,5 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
     config.register_javascript 'active_admin_custom'
+    config.register_javascript 'jquery.dl'
 end

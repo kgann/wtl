@@ -1,33 +1,49 @@
 class ImageController
   constructor: ->
     $ =>
-      @imageController = $("select.img_select")
-      @initImageControllers()
-      @initPreviouslyAddedImages()
+      @form = $("form")
+      @selectUI = $("<div id='selectUI'></div>").css("float", "left")
+      @imgContainer = $("<div class='images_container'></div>")
+      @imageSelect = $("select.img_select")
+      @imgData = @imageSelect.find("option").map ->
+        self = $(this)
+        text: self.text(), value: self.val(), descrption: null, imageSrc: self.attr("title"), selected: self.is(":selected")
+      @inputName = @imageSelect.attr("name")
+      @imageSelect.parent().html(@selectUI)
+      @setupImageSelector()
+      @displaySelectedImages()
+      @form.append("<input type='hidden', name='#{@inputName}'/>")
 
-  initImageControllers: ->
-    img_container = $("<div class='images_container'></div>")
-    @imageController.parent().append img_container
-    @imageController.bind 'change', (e) =>
-      options = @imageController.find("option").map( -> { img_id: $(@).val(), is_selected: $(@).is(':selected') } )
-      for opt in options
-        image = img_container.find("img[data-id=\"#{opt.img_id}\"]")
-        console.log image
-        if image.length == 0 and opt.is_selected
-          $.getJSON "/images/thumb_path/#{opt.img_id}", (i) =>
-            img = $("<img src='#{i.url}' data-id='#{i.id}'>")
-            img_container.append img
-            @bindImageClick(img)
-        else if image.length > 0 and not opt.is_selected
-          image.remove()
+  displaySelectedImages: ->
+    for img in @imgData
+      if img.selected
+        img_tag = $("<img src='#{img.imageSrc}' data-id='#{img.value}'>")
+        @imgContainer.append img_tag
+        @form.append("<input type='hidden', name='#{@inputName}' value='#{img.value}'/>")
+        @bindImgClick(img_tag)
 
-  bindImageClick: (img) ->
+  setupImageSelector: =>
+    @selectUI.ddslick
+      data: @imgData
+      width: 200
+      height: 300
+      imagePosition: "left"
+      selectText: "Add image..."
+      onSelected: (data) =>
+        @selectUI.find(".dd-selected").html("Add image...")
+        existing_img = @imgContainer.find("img[data-id=\"#{data.selectedData.value}\"]")
+        if existing_img.length == 0
+          img = $("<img src='#{data.selectedData.imageSrc}' data-id='#{data.selectedData.value}'>")
+          @imgContainer.append img
+          @form.append("<input type='hidden', name='#{@inputName}' value='#{data.selectedData.value}'/>")
+          @bindImgClick(img)
+          $(@imgContainer).effect('highlight', 800)
+    .before("<label>Images</label>").after(@imgContainer)
+
+  bindImgClick: (img) ->
     img.bind 'click', (e) =>
       self = $(e.currentTarget)
-      @imageController.find("option[value=\"#{self.data('id')}\"]").removeAttr("selected")
+      @form.find("input[value=\"#{self.data('id')}\"]").remove()
       self.remove()
-
-  initPreviouslyAddedImages: ->
-    @imageController.trigger 'change'
 
 new ImageController()
