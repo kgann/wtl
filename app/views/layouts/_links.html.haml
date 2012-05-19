@@ -1,5 +1,5 @@
 %li
-  =link_to 'Friends', '#', :class => "header with_sub"
+  =link_to 'Links', '#', :class => "header with_sub"
   %ul#links.sub_menu
     -links.each do |link|
       %li=link_to link.text.strip, link.url.strip.gsub(/http:\/\/|^/, "http://"), :class => 'sub_link', :target => '_blank'
