@@ -28,7 +28,7 @@ ActiveAdmin.register Artist do
       f.input :first_name, :required => true
       f.input :last_name, :required => true
       f.input :nickname, :hint => 'If you wanna be like Radar'
-      f.input :bio
+      f.input :bio, :hint => "To Create Links, use ths format: (link text)[www.google.com]<br />It will become: #{link_to("link text", "http://www.google.com")}".html_safe
       f.input :email
       f.input :active
       f.input :profile_image_id, :as => :select, :collection => Image.all.map{ |img| [img.title, img.id, {:title => img.asset.url(:thumb)}] }

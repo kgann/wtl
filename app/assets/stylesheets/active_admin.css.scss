@@ -15,3 +15,18 @@ a.dd-selected{
 .images_container{
   margin-top:50px
 }
+ul.dd-options{
+  padding:none !important;
+}
+ul.dd-options li{
+  float:left;
+  width:75px;
+  padding:2px !important;
+}
+a.dd-option{
+  border:none !important;
+  padding:none !important;
+}
+a.dd-option img{
+  border:2px solid #DDD;
+}

@@ -7,7 +7,7 @@ ActiveAdmin.register Item do
       f.input :artist, :include_blank => false, :required => true, :hint => "The artist you choose determines the pay-pal account used for a purchase"
       f.input :name, :required => true
       f.input :price
-      f.input :description, :required => true
+      f.input :description, :required => true,  :hint => "To Create Links, use ths format: (link text)[www.google.com]<br />It will become: #{link_to("link text", "http://www.google.com")}".html_safe
       f.input :images, :collection => Image.all.map{ |img| [img.title, img.id, {:title => img.asset.url(:thumb)}] }, :input_html => { :class => 'img_select' }, :hint => "Hold ctrl to select multiple images"
     end
     f.buttons

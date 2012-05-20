@@ -25,8 +25,8 @@ class ImageController
   setupImageSelector: =>
     @selectUI.ddslick
       data: @imgData
-      width: 100
-      height: 300
+      width: 488
+      height: 250
       imagePosition: "left"
       selectText: "Add Image"
       onSelected: (data) =>

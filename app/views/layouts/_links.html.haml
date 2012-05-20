@@ -2,4 +2,4 @@
   =link_to 'Links', '#', :class => "header with_sub"
   %ul#links.sub_menu
     -links.each do |link|
-      %li=link_to link.text.strip, link.url.strip.gsub(/http:\/\/|^/, "http://"), :class => 'sub_link', :target => '_blank'
+      %li=external_link_to(link.text.strip, link.url, ["sub_link"])
