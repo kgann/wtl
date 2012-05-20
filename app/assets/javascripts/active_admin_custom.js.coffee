@@ -41,7 +41,7 @@ class ImageController
       selectText: "Select Image"
       onSelected: (data) =>
         if data.selectedData.value == "REMOVE"
-          @profileImageSelectUI.find(".dd-selected").html("Add Image")
+          @profileImageSelectUI.find(".dd-selected").html("Select Image")
           @profileImageSelectUI.find(".dd-selected-value").attr("value", null)
         else
           @profileImageSelectUI.find(".dd-selected-value").attr("name", @prfileImageInputName)
