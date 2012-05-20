@@ -3,18 +3,26 @@ class ImageController
     $ =>
       @form = $("form")
       @selectUI = $("<div id='selectUI'></div>").css("float", "left")
+      @profileImageSelectUI = $("<div id='prfileImageSelectUI'></div>").css("float", "left")
       @imgContainer = $("<div class='images_container'></div>")
       @imageSelect = $("select.img_select")
+      @profileImageSelect = $("#artist_profile_image_id")
+      @profileImageSelectedImage = $("#artist_profile_image_id").val()
       @imgData = @imageSelect.find("option").map ->
         self = $(this)
         value: self.val(), descrption: null, imageSrc: self.attr("title"), selected: self.is(":selected")
       @inputName = @imageSelect.attr("name")
+      @prfileImageInputName = @profileImageSelect.attr("name")
       @imageSelect.parent().html(@selectUI)
+      @profileImageSelect.parent().html(@profileImageSelectUI)
       @setupImageSelector()
       @displaySelectedImages()
       @form.append("<input type='hidden', name='#{@inputName}'/>")
 
   displaySelectedImages: ->
+    @profileImageSelectUI.find(".dd-option-value[value=\"#{@profileImageSelectedImage}\"]").next().click()
+    @profileImageSelectUI.find(".dd-options").hide()
+    @profileImageSelectUI.find("span.dd-pointer-up").removeClass("dd-pointer-up")
     for img in @imgData
       if img.selected
         img_tag = $("<img src='#{img.imageSrc}' data-id='#{img.value}'>")
@@ -23,9 +31,21 @@ class ImageController
         @bindImgClick(img_tag)
 
   setupImageSelector: =>
+    @profileImageSelectUI.ddslick
+      data: @imgData
+      width: "76%"
+      height: 250
+      imagePosition: "left"
+      selectText: "Select Image"
+      onSelected: (data) =>
+        @profileImageSelectUI.find(".dd-selected-value").attr("name", @prfileImageInputName)
+        clear = $("<span>Remove</span>")
+        @profileImageSelectUI.find("div.dd-select span.dd-pointer").after(clear)
+    .before("<label>Profile Image</label>").after(@imgContainer)
+
     @selectUI.ddslick
       data: @imgData
-      width: 488
+      width: "76%"
       height: 250
       imagePosition: "left"
       selectText: "Add Image"

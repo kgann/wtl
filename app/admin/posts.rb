@@ -14,7 +14,7 @@ ActiveAdmin.register Post do
       f.input :artist, :required => true
       f.input :title, :required => true
       f.input :body, :required => true, :hint => "To Create Links, use ths format: (link text)[www.google.com]<br />It will become: #{link_to("link text", "http://www.google.com")}".html_safe
-      f.input :images, :collection => Image.all.map{ |img| [img.title, img.id, {:title => img.asset.url(:thumb)}] }, :input_html => { :class => 'img_select' }, :hint => "Hold ctrl to select multiple images"
+      f.input :images, :collection => Image.all.map{ |img| [img.title, img.id, {:title => img.asset.url(:thumb)}] }, :input_html => { :class => 'img_select' }
     end
     f.buttons
   end

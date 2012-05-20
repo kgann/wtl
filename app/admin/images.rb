@@ -1,5 +1,5 @@
 ActiveAdmin.register Image, {:sort_order => "id_desc"} do
-  menu :priority => 15
+  menu :priority => 15, :label => "Upload Images"
   scope :in_photo_loop, :default => false do |images|
     images.where(:photo_loop => true)
   end

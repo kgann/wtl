@@ -7,4 +7,7 @@ class Image < ActiveRecord::Base
   validates_presence_of :title
 
   has_attached_file :asset, :styles => { :gallery => "450x450#", :thumb => "75x75#", :photo_loop => "310x240#" }
+
+  default_scope :order => 'updated_at DESC'
+
 end

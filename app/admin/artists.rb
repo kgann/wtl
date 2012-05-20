@@ -32,7 +32,7 @@ ActiveAdmin.register Artist do
       f.input :email
       f.input :active
       f.input :profile_image_id, :as => :select, :collection => Image.all.map{ |img| [img.title, img.id, {:title => img.asset.url(:thumb)}] }
-      f.input :images, :collection => Image.all.map{ |img| [img.title, img.id, {:title => img.asset.url(:thumb)}] }, :label => "Portfolio", :input_html => { :class => 'img_select' }, :hint => "Hold ctrl to select multiple images"
+      f.input :images, :collection => Image.all.map{ |img| [img.title, img.id, {:title => img.asset.url(:thumb)}] }, :label => "Portfolio", :input_html => { :class => 'img_select' }
       f.buttons
     end
   end
