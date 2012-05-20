@@ -11,6 +11,8 @@ class ImageController
       @imgData = @imageSelect.find("option").map ->
         self = $(this)
         value: self.val(), descrption: null, imageSrc: self.attr("title"), selected: self.is(":selected")
+      @profileImageData = @imgData.slice()
+      @profileImageData.push(text: "Remove", value: "REMOVE")
       @inputName = @imageSelect.attr("name")
       @prfileImageInputName = @profileImageSelect.attr("name")
       @imageSelect.parent().html(@selectUI)
@@ -30,17 +32,19 @@ class ImageController
         @form.append("<input type='hidden', name='#{@inputName}' value='#{img.value}'/>")
         @bindImgClick(img_tag)
 
-  setupImageSelector: =>
+  setupImageSelector: ->
     @profileImageSelectUI.ddslick
-      data: @imgData
+      data: @profileImageData
       width: "76%"
       height: 250
       imagePosition: "left"
       selectText: "Select Image"
       onSelected: (data) =>
-        @profileImageSelectUI.find(".dd-selected-value").attr("name", @prfileImageInputName)
-        clear = $("<span>Remove</span>")
-        @profileImageSelectUI.find("div.dd-select span.dd-pointer").after(clear)
+        if data.selectedData.value == "REMOVE"
+          @profileImageSelectUI.find(".dd-selected").html("Add Image")
+          @profileImageSelectUI.find(".dd-selected-value").attr("value", null)
+        else
+          @profileImageSelectUI.find(".dd-selected-value").attr("name", @prfileImageInputName)
     .before("<label>Profile Image</label>").after(@imgContainer)
 
     @selectUI.ddslick
@@ -57,7 +61,6 @@ class ImageController
           @imgContainer.append img
           @form.append("<input type='hidden', name='#{@inputName}' value='#{data.selectedData.value}'/>")
           @bindImgClick(img)
-          $(@imgContainer).effect('highlight', 800)
     .before("<label>Images</label>").after(@imgContainer)
 
   bindImgClick: (img) ->
