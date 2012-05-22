@@ -1,4 +1,8 @@
 ActiveAdmin.register Item do
+  before_filter :only => :index do 
+    @per_page = 10 
+  end
+
   menu :label => "Store Items", :parent => "The Store"
 
   form :html => { :multipart => true } do |f|
@@ -13,4 +17,19 @@ ActiveAdmin.register Item do
     f.buttons
   end
 
+  show do
+    attributes_table do
+      row :id
+      row :category
+      row :name
+      row :price
+      row :description
+      row :artist do |post|
+        link_to "#{post.artist.get_name}", admin_artist_path(post.artist)
+      end
+      row :images do |post|
+        post.images.map{ |img| image_tag img.asset.url(:thumb), :class => 'preview' }.join.html_safe
+      end
+    end
+  end
 end

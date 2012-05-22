@@ -1,4 +1,8 @@
 ActiveAdmin.register Faq do
+  before_filter :only => :index do 
+    @per_page = 10 
+  end
+
   menu :priority => 20
   form do |f|
     f.inputs "Frequently Asked Question" do

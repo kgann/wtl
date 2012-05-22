@@ -1,29 +1,42 @@
 ActiveAdmin::Dashboards.build do
   section "Recent Posts" do
-     table_for Post.order("created_at desc").limit(10) do
-       column :title do |post|
-         link_to post.title, [:admin, post]
-       end
-       column :artist do |post|
-         link_to "#{post.artist.get_name}", admin_artist_path(post.artist)
-        end
-       column :created_at
-     end
-     strong { link_to "View All Posts", admin_posts_path }
-   end
-
-   section "Recent Store Items" do
-      table_for Item.order("created_at desc").limit(10) do
-        column :name do |item|
-          link_to item.name, [:admin, item]
-        end
-        column :category do |item|
-          link_to "#{item.category.name}", admin_category_path(item.category)
-         end
-        column :created_at
+    table_for Post.order("created_at desc").limit(10) do
+      column :title do |post|
+        link_to post.title, [:admin, post]
       end
-      strong { link_to "View All Items", admin_items_path }
+      column :artist do |post|
+        link_to "#{post.artist.get_name}", admin_artist_path(post.artist)
+      end
+      column :created_at
     end
+    strong { link_to "View All Posts", admin_posts_path }
+  end
+
+  section "Recent Store Items" do
+    table_for Item.order("created_at desc").limit(10) do
+      column :name do |item|
+        link_to item.name, [:admin, item]
+      end
+      column :category do |item|
+        link_to "#{item.category.name}", admin_category_path(item.category)
+      end
+      column :created_at
+    end
+    strong { link_to "View All Items", admin_items_path }
+  end
+
+  section "Recently Uploaded Images" do
+    table_for Image.order("created_at desc").limit(10) do
+      column :title do |image|
+        link_to image.title, [:admin, image]
+      end
+      column :photo_loop
+      column "Preview" do |image|
+        image_tag image.asset.url(:thumb)
+      end
+    end
+    strong { link_to "View All Images", admin_images_path }
+  end
 
   # Define your dashboard sections here. Each block will be
   # rendered on the dashboard in the context of the view. So just

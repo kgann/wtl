@@ -1,4 +1,8 @@
 ActiveAdmin.register Artist do
+  before_filter :only => :index do 
+    @per_page = 10 
+  end
+
   menu :parent => "Users"
 
   scope :active, :default => true do |artists|
@@ -21,6 +25,23 @@ ActiveAdmin.register Artist do
     column :email
     column :active
     default_actions
+  end
+
+  show do
+    attributes_table do
+      row :id
+      row :first_name
+      row :last_name
+      row :nickname
+      row :email
+      row :bio
+      row :profile_image do |artist|
+        image_tag artist.profile_image.asset.url(:thumb), :class => 'preview'
+      end
+      row "Portfolio" do |post|
+        post.images.map{ |img| image_tag img.asset.url(:thumb), :class => 'preview' }.join.html_safe
+      end
+    end
   end
 
   form do |f|
