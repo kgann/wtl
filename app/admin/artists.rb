@@ -36,7 +36,7 @@ ActiveAdmin.register Artist do
       row :email
       row :bio
       row :profile_image do |artist|
-        image_tag artist.profile_image.asset.url(:thumb), :class => 'preview'
+        image_tag artist.profile_image.asset.url(:thumb), :class => 'preview' if artist.profile_image
       end
       row "Portfolio" do |post|
         post.images.map{ |img| image_tag img.asset.url(:thumb), :class => 'preview' }.join.html_safe
