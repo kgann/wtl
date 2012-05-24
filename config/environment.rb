@@ -5,3 +5,5 @@ require File.expand_path('../application', __FILE__)
 Wtl::Application.initialize!
 
 Haml::Template.options[:format] = :xhtml
+
+ActionMailer::Base.delivery_method = :sendmail
